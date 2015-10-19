@@ -37,8 +37,8 @@ int main(int argc, char** argv)
 	OuvrirNiveau("niveau.txt");
 
     glutInit(&argc, argv);
-	glutInitWindowPosition(350,100);
-	glutInitWindowSize(500,500);
+	glutInitWindowPosition(400,100);
+	glutInitWindowSize(600,600);
 
 	glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE);
 	glutCreateWindow("Labyrinthe");
@@ -50,7 +50,6 @@ int main(int argc, char** argv)
 
 	glutMainLoop();
 	LibererMemoire();
-	//system("pause");
 	exit(0);
 	return 0;
 }
@@ -116,7 +115,8 @@ void OuvrirNiveau(string nom_fichier)
 	if(!f)
 	{
 		cout<< "Error when open the level file !"<<endl;
-		system("pause");
+		cout<<"Press enter to continue > "<<endl;
+        getchar();
 		exit(0);
 	}
 
@@ -216,7 +216,9 @@ void TestVictoire()
 		glutExit();
 		LibererMemoire();
 		cout<<"Congratulations! You win!"<<endl;
-		//system("pause");
+		cout<<"Press enter to continue > "<<endl;
+        getchar();
+        system("pause");
 		exit(0);
 	}
 }

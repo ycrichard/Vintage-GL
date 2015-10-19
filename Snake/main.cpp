@@ -52,13 +52,20 @@ foods* food=new foods;
 
 int main()
 {
-        cout<<"Welcome to Snake game."<<endl;
+        #ifdef _WIN32
+            system("cls");
+        #else
+            // Assume POSIX
+            system("clear");
+        #endif
+        cout<<"Welcome to Snake game!"<<endl;
         srand((int)time(NULL));
 
         NewSession();
 
         LibererMemoire();
-        system("pause");
+        cout<<"Press enter to continue > "<<endl;
+        getchar();
         exit(0);
         return 0;
 }
@@ -75,20 +82,31 @@ void NewSession()
         string maps="map/niveau1.txt";
         do{
         cout<<"Chose a map (1 - 4) : ";
-        cin>>map;}while(map<1||map>4);
+        cin>>map;
+        if(cin.fail()) // or: if(!cin)
+        {
+            cin.clear(); // reset failbit
+            string junk;
+            getline(cin, junk);
+        }
+        }while(map<1||map>4);
         maps[10]=map+48;
 
         OuvrirNiveau(maps);
         food->ChangePosition();
-        cout << "good so far"<< endl;
-        system("cls");
+        #ifdef _WIN32
+            system("cls");
+        #else
+            // Assume POSIX
+            system("clear");
+        #endif
         cout<<"Score : "<<Score<<endl;
         cout<<"Speed : "<<1000/TIMER_MILLIS<<endl;
 
         int argc = 1;
-        char *argv[1] = {(char*)"xx"};
+        char *argv[1] = {(char*)""};
         glutInit(&argc, argv);
-        glutInitWindowPosition(400,150);
+        glutInitWindowPosition(400,50);
         glutInitWindowSize(800,600);
 
         glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE);
@@ -111,7 +129,8 @@ void OuvrirNiveau(string nom_fichier)
         if(!f)
         {
                 cout<< "Error when open the file !"<<endl;
-                system("pause");
+                cout<<"Press enter to continue > "<<endl;
+                getchar();
                 exit(0);
         }
 
@@ -329,7 +348,12 @@ void Collision()
                 Score++;
                 TIMER_MILLIS=(TIMER_MILLIS-60)*0.96+60;
                 SnakeAffichage();
-                system("cls");
+                #ifdef _WIN32
+                    system("cls");
+                #else
+                    // Assume POSIX
+                    system("clear");
+                #endif
                 cout<<"Score : "<<Score<<endl;
                 if(TIMER_MILLIS>100)
                 cout<<"Speed : "<<setprecision(2)<<1000/TIMER_MILLIS<<endl;
@@ -418,6 +442,8 @@ void EndOut()
         cout<<"*********************************"<<endl<<endl;
 
         //replayCheck();
+        cout<<"Press enter to continue > "<<endl;
+        getchar();
         system("pause");
         exit(0);
 }

@@ -4,14 +4,14 @@ some simple games based on openGL
 ------------------------------------------
 INSTALLATION:
 
-Compiler: mingw32
+Compiler: g++
 
-Dependence: freeglut
+Dependency: freeglut
 
-  http://freeglut.sourceforge.net/
+    http://freeglut.sourceforge.net/
+  or:
+    apt-get install freeglut3-dev
 
-Make example:
-
-  g++ -c -o *.o *.c -I"C:\Program Files\Common Files\MinGW\freeglut\include"
-
-  g++ -o example *.o -L"C:\Program Files\Common Files\MinGW\freeglut\lib" -lglu32 -lfreeglut -lopengl32
+note:
+    on linux do the following before launching: export LIBGL_ALWAYS_INDIRECT=1
+    on MacOS, freeglut dependent on XQuartz.

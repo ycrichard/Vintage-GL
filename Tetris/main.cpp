@@ -59,7 +59,14 @@ int winID;
 int main()
 {
 	srand((int)time(NULL));
-	system("cls");
+
+	#ifdef _WIN32
+	    system("cls");
+	#else
+	    // Assume POSIX
+	    system("clear");
+	#endif
+
 	cout<<"Welcome to Tetris !"<<endl<<endl;
 	cout<<"F1 : Save"<<endl;
 	cout<<"F2 : Load"<<endl;
@@ -67,8 +74,9 @@ int main()
 	cout<<"Space : Fast drop down"<<endl;
 	cout<<"Esc : Quit"<<endl;
 	cout<<"Or, right click on your mouse to check menu."<<endl<<endl;
-	cout<<"To start the game > "<<endl;
-	system("pause");
+
+	cout<<"Press enter to start the game > "<<endl;
+	getchar();
 
 	NewSession();
 
@@ -104,16 +112,21 @@ void NewSession()
       matrice[i][NbColonnes+1].SetAppear(true);
     }
 
-    system("cls");
-		cout<<"Score : "<<Score<<endl;
-		cout<<"Level : "<<Level<<endl;
+	#ifdef _WIN32
+	    system("cls");
+	#else
+	    // Assume POSIX
+	    system("clear");
+	#endif
+	cout<<"Score : "<<Score<<endl;
+	cout<<"Level : "<<Level<<endl;
 
     NewBrick();
 
     int argc = 1;
-    char *argv[1] = {(char*)"xx"};
+    char *argv[1] = {(char*)""};
     glutInit(&argc, argv);
-    glutInitWindowPosition(400,150);
+    glutInitWindowPosition(500,30);
     glutInitWindowSize(480,690);
 
     glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE);
@@ -384,7 +397,12 @@ void CheckFullLigne()
 		if(Score>=Level*50)				//算法需要修改
 		{Level++;TIMER_MILLIS-=60;}
 
-		system("cls");
+		#ifdef _WIN32
+		    system("cls");
+		#else
+		    // Assume POSIX
+		    system("clear");
+		#endif
 		cout<<"Score : "<<Score<<endl;
 		cout<<"Level: "<<Level<<endl;
 	}
@@ -568,7 +586,12 @@ void Load()
 			}
 		}
 	f.close();
-	system("cls");
+	#ifdef _WIN32
+	    system("cls");
+	#else
+	    // Assume POSIX
+	    system("clear");
+	#endif
 	cout<<"Score : "<<Score<<endl;
 	cout<<"Level: "<<Level<<endl;
 }

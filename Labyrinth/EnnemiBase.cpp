@@ -94,7 +94,10 @@ void EnnemiBase::TestCollision()
 		glutExit();
 		LibererMemoire();
 		cout<<"You lose !"<<endl;
-		//system("pause");
+
+		cout<<"Press enter to continue > "<<endl;
+        getchar();
+        system("pause");
 		exit(0);
 	}
 }
