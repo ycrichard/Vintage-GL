@@ -66,8 +66,9 @@ int main()
 	    // Assume POSIX
 	    system("clear");
 	#endif
-
-	cout<<"Welcome to Tetris !"<<endl<<endl;
+	cout<<"*******************"<<endl;
+	cout<<"Welcome to Tetris !"<<endl;
+	cout<<"*******************"<<endl<<endl;
 	cout<<"F1 : Save"<<endl;
 	cout<<"F2 : Load"<<endl;
 	cout<<"P : Pause"<<endl;
@@ -75,8 +76,13 @@ int main()
 	cout<<"Esc : Quit"<<endl;
 	cout<<"Or, right click on your mouse to check menu."<<endl<<endl;
 
-	cout<<"Press enter to start the game > "<<endl;
-	getchar();
+	#ifdef _WIN32
+		cout<<"To start the game, ";
+        system("pause");
+    #else
+        cout<<"Press enter to start the game > "<<endl;
+        getchar();
+    #endif
 
 	NewSession();
 

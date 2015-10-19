@@ -58,14 +58,14 @@ int main()
             // Assume POSIX
             system("clear");
         #endif
-        cout<<"Welcome to Snake game!"<<endl;
+        cout<<"******************"<<endl;
+        cout<<"Welcome to Snake !"<<endl;
+        cout<<"******************"<<endl<<endl;
         srand((int)time(NULL));
 
         NewSession();
 
         LibererMemoire();
-        cout<<"Press enter to continue > "<<endl;
-        getchar();
         exit(0);
         return 0;
 }
@@ -442,9 +442,12 @@ void EndOut()
         cout<<"*********************************"<<endl<<endl;
 
         //replayCheck();
-        cout<<"Press enter to continue > "<<endl;
-        getchar();
-        system("pause");
+        #ifdef _WIN32
+            system("pause");
+        #else
+            cout<<"Press enter to continue > "<<endl;
+            getchar();
+        #endif
         exit(0);
 }
 

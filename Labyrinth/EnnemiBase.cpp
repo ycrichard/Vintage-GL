@@ -94,10 +94,12 @@ void EnnemiBase::TestCollision()
 		glutExit();
 		LibererMemoire();
 		cout<<"You lose !"<<endl;
-
-		cout<<"Press enter to continue > "<<endl;
-        getchar();
-        system("pause");
+		#ifdef _WIN32
+            system("pause");
+        #else
+            cout<<"Press enter to continue > "<<endl;
+            getchar();
+        #endif
 		exit(0);
 	}
 }

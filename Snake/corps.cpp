@@ -35,7 +35,12 @@ void corps::TestCollision()
 	{
 		EndOut();
 		LibererMemoire();
-		system("pause");
+		#ifdef _WIN32
+            system("pause");
+        #else
+            cout<<"Press enter to continue > "<<endl;
+            getchar();
+        #endif
 		exit(0);
 	}
 }
@@ -46,7 +51,12 @@ void corps::SeCollision(corps* c)
 	{
 		EndOut();
 		LibererMemoire();
-		system("pause");
+		#ifdef _WIN32
+            system("pause");
+        #else
+            cout<<"Press enter to continue > "<<endl;
+            getchar();
+        #endif
 		exit(0);
 	}
 }
@@ -56,8 +66,8 @@ void corps::Dessiner()
 	glTranslated(PosC+0.5, PosL+0.5, 0.0);
 		glColor3d(0.9, 0.0, 0.0);			//rouge
 		glutSolidCube(0.8);
-		glColor3d(0.8, 0.7, 0.0); 
-		glutWireCube(0.8);				
+		glColor3d(0.8, 0.7, 0.0);
+		glutWireCube(0.8);
 	glPopMatrix();
 }
 

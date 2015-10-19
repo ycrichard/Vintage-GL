@@ -115,8 +115,12 @@ void OuvrirNiveau(string nom_fichier)
 	if(!f)
 	{
 		cout<< "Error when open the level file !"<<endl;
-		cout<<"Press enter to continue > "<<endl;
-        getchar();
+		#ifdef _WIN32
+            system("pause");
+        #else
+            cout<<"Press enter to continue > "<<endl;
+            getchar();
+        #endif
 		exit(0);
 	}
 
@@ -216,9 +220,12 @@ void TestVictoire()
 		glutExit();
 		LibererMemoire();
 		cout<<"Congratulations! You win!"<<endl;
-		cout<<"Press enter to continue > "<<endl;
-        getchar();
-        system("pause");
+		#ifdef _WIN32
+            system("pause");
+        #else
+            cout<<"Press enter to continue > "<<endl;
+            getchar();
+        #endif
 		exit(0);
 	}
 }
