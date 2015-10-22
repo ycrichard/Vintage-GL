@@ -1,5 +1,5 @@
 #include "corps.h"
-
+#include "stdio.h"
 extern int NbColonnes;
 extern int NbLignes;
 extern char** matrice;
