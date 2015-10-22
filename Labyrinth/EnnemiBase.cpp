@@ -1,6 +1,6 @@
 #include "EnnemiBase.h"
 #include "Joueur.h"
-#include "stdio.h"
+#include <cstdio>
 extern Joueur MonJoueur;
 extern void LibererMemoire();
 extern void LabyAffichage();
