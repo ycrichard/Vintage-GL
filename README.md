@@ -17,8 +17,12 @@ or:
 
 Note:
 
-  on linux do the following before launching: 
+  on linux if there are problems launching the program, use: 
 
+    export LIBGL_ALWAYS_SOFTWARE=1
+    
+  or:
+  
     export LIBGL_ALWAYS_INDIRECT=1
     
   on MacOS, freeglut dependent on XQuartz.
